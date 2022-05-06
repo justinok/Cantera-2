@@ -1,5 +1,4 @@
-# Cantera-2
-## Repositorio con toda la información correspondiente al training de Cantera 2
+# Tarea 
+## Cree una nueva ruta en /routes/users.js que muestra el texto "Eres genial" en la URL /users/cool/
 
-Si deseas encontrar los ejercicios y entregables busca en las distintas branch de este repositorio
-encontraras toda la informacion en cada una de las ramas.
+Se cargaron todos los archivos del proyecto menos la carpeta node_modules, al ejecutar se vera el mensaje en la ruta http://localhost:3000/users/cool/
