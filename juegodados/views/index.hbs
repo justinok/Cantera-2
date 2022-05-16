@@ -1,0 +1,68 @@
+<div class="title">
+    <div class="content">
+        {{#if email}}
+            <h1>Bienvenidos al juego {{email}}</h1>
+            <style>
+                div.dice{
+                    float:bottom;
+                    width:60px;
+                    background:#000;
+                    border:#999 1px solid;
+                    padding:10px;
+                    font-size:30px;
+                    text-align:center;
+                    margin:5px;
+                }
+            </style>
+            <script>
+                function rollDice(){
+                    var die1 = document.getElementById("die1");
+                    var die2 = document.getElementById("die2");
+                    var status = document.getElementById("status");
+                    var d1 = Math.floor(Math.random() * 6) + 1;
+                    var d2 = Math.floor(Math.random() * 6) + 1;
+                    var diceTotal = d1 + d2;
+                    die1.innerHTML = d1;
+                    die2.innerHTML = d2;
+                    status.innerHTML = "Sacaste "+diceTotal+".";
+                    if(d1 == d2){
+                        status.innerHTML += " PARES! Turno gratis!!";
+                    }
+                }
+            </script>
+            </head>
+            <body>
+            <div id="die1" class="dice">0</div>
+            <div id="die2" class="dice">0</div>
+            <button onclick="rollDice()">Lanzar dados</button>
+            <h2 id="status" style="clear:left;"></h2>
+            </body
+        {{else}}
+            <h1>Diversion ilimitada.</h1>
+            <h2>apresurate, pierde tu dinero ahora.</h2>
+            <form action="/signup" method="post">
+                <h3>Registra tu nombre para entrar al casino.</h3>
+                <div class="email">
+                    <input type="email" name="emailInput" placeholder="nombre de jugador">
+                    <button type="submit">Crear jugador ></button>
+                </div>
+            </form>
+        {{/if}}
+    </div>
+</div>
+
+<!-- https://www.makeuseof.com/netflix-style-slider-component-css-and-javascript/ -->
+
+<div class="wrapper">
+    <section id="section1">
+        <a href="#section1" class="arrow__btn">‹</a>
+
+        <div class="item">
+            <a href="/movies/" class="movie__btn">
+            <img src="{{img}}">
+            </a>
+        </div>
+        
+        <a href="#section1" class="arrow__btn">›</a>
+    </section>
+</div>
