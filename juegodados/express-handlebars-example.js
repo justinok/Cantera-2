@@ -5,7 +5,7 @@ var methodOverride = require('method-override');
 
 // custom routes
 var indexRouter = require('./routes/index');
-var moviesRouter = require('./routes/movies');
+var moviesRouter = require('./routes/game');
 
 // set express
 const app = express();

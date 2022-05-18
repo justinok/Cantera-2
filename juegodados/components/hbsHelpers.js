@@ -1,4 +1,16 @@
-// https://www.npmjs.com/package/hbs-helpers
+/**
+ * Clase creada para poder usar tipologia especial en hbs, informacion
+ * sobre los helpers de HBS se puede encontrar en:
+ * https://www.npmjs.com/package/hbs-helpers
+ *
+ * @version 1.00.000 2022-05-17
+ *
+ * @author Justin Alejandro Diaz - jusadiazjim@unal.edu.co
+ *
+ * @since 1
+ */
+
+
 
 var helper = {
     if_cond: (v1, op, v2, options) => {

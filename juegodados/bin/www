@@ -2,7 +2,7 @@
 
 /**
  * Module dependencies.
- * Clase creada por hbs
+ * Clase creada por constructor de hbs
  */
 
 var app = require('../app');

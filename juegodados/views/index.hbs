@@ -1,11 +1,23 @@
+{{!-- {{El index funciona de la siguiente manera:
+muestra los formularios -> cuando detecta que se inserto el nombre muestra
+el juego mandando al backend los jugadores, sus apuestas y el resultado del
+juego
+
+@version 1.00.000 2022-05-17
+
+@author Justin Alejandro Diaz - jusadiazjim@unal.edu.co
+
+@since 1
+}} --}}
+
 <div class="title">
     <div class="content">
-        {{#if email}}
-            <h1>Bienvenidos al juego {{email}}</h1>
+        {{#if playername}}
+            <h1>Bienvenidos al juego {{playername}} y {{playername2}}</h1>
             <style>
                 div.dice{
                     float:bottom;
-                    width:60px;
+                    width:90px;
                     background:#000;
                     border:#999 1px solid;
                     padding:10px;
@@ -25,44 +37,49 @@
                     die1.innerHTML = d1;
                     die2.innerHTML = d2;
                     status.innerHTML = "Sacaste "+diceTotal+".";
+                    status.innerHTML = "Jugador 1 Sacaste "+d1+"." +
+                            " Jugador 2 sacaste " + d2 + ".";
                     if(d1 == d2){
-                        status.innerHTML += " PARES! Turno gratis!!";
+                        status.innerHTML += " Empate!! las apuestas se suman " +
+                                "para la siguiente ronda de desempate";
+                    }
+                    if(d1 > d2){
+                        status.innerHTML += " El ganador es el jugador 1!! ";
+                    }
+                    if(d1 < d2){
+                        status.innerHTML += " El ganador es el jugador numero "
+                                + "2!!";
                     }
                 }
             </script>
             </head>
             <body>
-            <div id="die1" class="dice">0</div>
-            <div id="die2" class="dice">0</div>
+            <div id="die1" class="dice" >Jgdr 1</div>
+            <div id="die2" class="dice">Jgdr 2</div>
             <button onclick="rollDice()">Lanzar dados</button>
             <h2 id="status" style="clear:left;"></h2>
-            </body
+            </body>
         {{else}}
             <h1>Diversion ilimitada.</h1>
             <h2>apresurate, pierde tu dinero ahora.</h2>
-            <form action="/signup" method="post">
+            <form action="/createGame" method="post">
                 <h3>Registra tu nombre para entrar al casino.</h3>
-                <div class="email">
-                    <input type="email" name="emailInput" placeholder="nombre de jugador">
-                    <button type="submit">Crear jugador ></button>
+                <div class="form-group">
+                    <input class="form-control" name="playername"
+                           placeholder="nombre de jugador1">
+                    <input class="form-control" name="betplayername"
+                           placeholder="apuesta jugador1 en dolares $">
                 </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="playername2"
+                              placeholder="nombre de jugador2"></textarea>
+                    <textarea class="form-control" name="betplayername2"
+                              placeholder="apuestajugador2 en dolares $">
+
+                    </textarea>
+                </div>
+                <button>Entrar al Casino</button>
             </form>
         {{/if}}
     </div>
-</div>
-
-<!-- https://www.makeuseof.com/netflix-style-slider-component-css-and-javascript/ -->
-
-<div class="wrapper">
-    <section id="section1">
-        <a href="#section1" class="arrow__btn">‹</a>
-
-        <div class="item">
-            <a href="/movies/" class="movie__btn">
-            <img src="{{img}}">
-            </a>
-        </div>
-        
-        <a href="#section1" class="arrow__btn">›</a>
-    </section>
 </div>

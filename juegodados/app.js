@@ -1,3 +1,16 @@
+/**
+ * Clase principal del juego donde se corre todo el juego
+ *
+ * @version 1.00.000 2022-05-17
+ *
+ * @author Justin Alejandro Diaz - jusadiazjim@unal.edu.co
+ *
+ * @since 1
+ */
+
+
+/** Dependencias de la clase **/
+
 var createError = require('http-errors');
 var express = require('express');
 var hbs = require('hbs');
@@ -6,12 +19,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var helpers = require('./components/hbsHelpers');
 var mongoose = require('mongoose');
+
 //conectar con mongo atlas al cluster creado
 require('dotenv/config');
 
-
+// usaremos express
 var app = express();
 
+// Registramos los helpers que creamos para usar expresiones diferentes en hbs
 hbs.registerPartials(path.join(__dirname, 'views/partials'), (err) => {});
 for (let helper in helpers) {
   hbs.registerHelper(helper, helpers[helper]);
@@ -27,19 +42,25 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// llamamos las rutas que usaremos para el juego
 var indexRouter = require('./routes/index');
-var moviesRouter = require('./routes/movies');
+var moviesRouter = require('./routes/game');
+
 
 app.use('/', indexRouter);
+app.use('/startGame', indexRouter);
 app.use('/game', moviesRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function(req,
+                 res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function(err,
+                 req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
