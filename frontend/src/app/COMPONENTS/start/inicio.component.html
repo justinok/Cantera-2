@@ -1,0 +1,31 @@
+<div class="container">
+    <button class="btn btn-primary" [routerLink]="['/add']" routerLinkActive="router-link-active" >Agregar</button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">name</th>
+                <th scope="col">number</th>
+                <th scope="col">e_mail</th>
+                <th scope="col">born_date</th>
+                <th scope="col">Finalizado</th>
+                <th>#</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tarea of lista">
+                <td>{{tarea.id}}</td>
+                <td>{{tarea.name}}</td>
+                <td>{{tarea.number}}</td>
+                <td>{{tarea.e_mail}}</td>
+                <td>{{tarea.born_date}}</td>
+                <td>{{tarea.Finalizado}}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="eliminar(tarea.id)">Eliminar</button>
+                    <button class="btn btn-warning" [routerLink]="['/edit/',tarea.id]" routerLinkActive="router-link-active" >Modificar</button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
